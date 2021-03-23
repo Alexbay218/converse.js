@@ -1059,7 +1059,7 @@ converse.plugins.add('converse-omemo', {
                 const keys = await Promise.all(range(0, _converse.NUM_PREKEYS).map(id => libsignal.KeyHelper.generatePreKey(id)));
                 keys.forEach(k => _converse.omemo_store.storePreKey(k.keyId, k.keyPair));
                 const devicelist = _converse.devicelists.get(_converse.bare_jid);
-                const device = await devicelist.devices.create({'id': bundle.device_id, 'jid': _converse.bare_jid}, {'promise': true});
+                const device = devicelist.devices.create({'id': bundle.device_id, 'jid': _converse.bare_jid});
                 const marshalled_keys = keys.map(k => ({'id': k.keyId, 'key': u.arrayBufferToBase64(k.keyPair.pubKey)}));
                 bundle['prekeys'] = marshalled_keys;
                 device.save('bundle', bundle);

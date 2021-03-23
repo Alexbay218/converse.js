@@ -852,8 +852,7 @@ const ChatBox = ModelWithContact.extend({
     async createMessage (attrs, options) {
         attrs.time = attrs.time || (new Date()).toISOString();
         await this.messages.fetched;
-        const p = this.messages.create(attrs, Object.assign({'wait': true, 'promise':true}, options));
-        return p;
+        return this.messages.create(attrs, options);
     },
 
     /**
