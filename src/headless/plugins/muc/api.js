@@ -156,5 +156,17 @@ export default {
             }
             return Promise.all(jids.map(jid => _get(jid)));
         }
+    },
+
+    /**
+     * The "affiliations" namespace groups methods relevant to setting and
+     * getting MUC affiliations.
+     *
+     * @namespace api.rooms.affiliations
+     * @memberOf api.rooms
+     */
+    affiliations: {
+        set (affiliation, muc_jids, members) {
+        }
     }
 }
